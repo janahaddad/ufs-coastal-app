@@ -5,11 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. Porting UFS Coastal Model &mdash; UFS Coastal Application main documentation</title>
+  <title>4. Porting UFS Coastal Model &mdash; UFS Coastal Application main documentation</title>
   
 
   
@@ -41,7 +41,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="UFS Coastal Application main documentation" href="index.html"/>
-        <link rel="prev" title="1. Introduction" href="introduction.html"/> 
+        <link rel="prev" title="3. Configurations" href="Configurations.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -108,9 +108,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Porting UFS Coastal Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#docker-container">2.1. Docker Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BuildingAndRunning.html">2. Building and Running the UFS Coastal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configurations.html">3. Configurations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Porting UFS Coastal Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#docker-container">4.1. Docker Container</a></li>
 </ul>
 </li>
 </ul>
@@ -157,13 +159,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">2. </span>Porting UFS Coastal Model</li>
+      <li><span class="section-number">4. </span>Porting UFS Coastal Model</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/porting.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/PortingModel.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -177,11 +179,12 @@
            <div itemprop="articleBody">
             
   <section id="porting-ufs-coastal-model">
-<span id="porting"></span><h1><span class="section-number">2. </span>Porting UFS Coastal Model<a class="headerlink" href="#porting-ufs-coastal-model" title="Permalink to this heading">¶</a></h1>
-<p>Porting UFS Coastal to unsupported platform involves multiple steps that is explained briefly
-in the following sections for different environments.</p>
+<span id="portingmodel"></span><h1><span class="section-number">4. </span>Porting UFS Coastal Model<a class="headerlink" href="#porting-ufs-coastal-model" title="Permalink to this heading">¶</a></h1>
+<p>Porting UFS Coastal Model to an unsupported platform involves multiple steps. Similar to the UFS Weather Model, the UFS Coastal Model also uses <a class="reference external" href="https://github.com/JCSDA/spack-stack">spack-stack</a> package manager to manage model dependencies. In addition to the standard list of dependencies required by the UFS Weather Model, the UFS Coastal Model has extra dependencies for the addtional model components like <a class="reference external" href="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview">ParMETIS</a> and <a class="reference external" href="https://proj.org/en/5.1/">PROJ</a> libraries. The UFS Coastal Model component is able to install extra dependecies by theirself if they are not provided by the system or spack-stack.</p>
+<p>The prerequisite software libraries for building the UFS Coastal Model already exist in a centralized location on <a class="reference external" href="https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html#pre-configured-sites-tier-1">Tier 1</a> (preconfigured) systems, so users could run the model in those plaotforms. The list of pre-configured Tier 1 &amp; 2 systems are generally restricted to those with access through NOAA and its affiliates. These systems are named (e.g., Hera, Orion, Hercules and Derecho).</p>
+<p>In addtion to the already supported systems, UFS Coastal is also ported to <a class="reference external" href="https://tacc.utexas.edu/systems/frontera/">TACC Frontera</a> system but this is still experimental.</p>
 <section id="docker-container">
-<h2><span class="section-number">2.1. </span>Docker Container<a class="headerlink" href="#docker-container" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Docker Container<a class="headerlink" href="#docker-container" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Create new Docker container and install base development environment:</p></li>
 </ol>
@@ -190,7 +193,6 @@ in the following sections for different environments.</p>
 <span class="go">apt-get update</span>
 <span class="go">apt-get upgrade</span>
 <span class="go">apt-get install -y gcc g++ gfortran gdb</span>
-<span class="go">apt-get install -y environment-modules</span>
 <span class="go">apt-get install -y build-essential</span>
 <span class="go">apt-get install -y libkrb5-dev</span>
 <span class="go">apt-get install -y m4</span>
@@ -420,7 +422,7 @@ Also note that <code class="docutils literal notranslate"><span class="pre">meti
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="introduction.html" class="btn btn-neutral" title="1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Configurations.html" class="btn btn-neutral" title="3. Configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
