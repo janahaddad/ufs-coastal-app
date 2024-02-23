@@ -242,6 +242,9 @@ according to dependencies and run them concurrently.
 .. note::
    Workflow Engine `ecFlow <https://confluence.ecmwf.int/display/ECFLOW>`_ is used with ``-e`` argument and `Rocoto <https://github.com/christopherwharrop/rocoto>`_ is used with ``-r`` argument. The Workflow Engine needs to be installed to the system to use these options. The Tier-1 platforms might have those workflow engines but Tear-2 level supported systems and custom installations might not have them.
 
+.. note::
+   Since the UFS Coastal specific input files are not part of the UFS Weather Model input files, the location of the RT directory (defined by ``DISKNM`` variable) in ``rt.sh`` needs to be modified to run UFS Coastal specific RTs. To do that user needs to edit platform (i.e. Orion, Hercules) specific section of ``rt.sh`` and set ``DISKNM`` variable. For both ``Orion`` and ``Hercules`` platforms, ``/work2/noaa/nems/tufuk/RT`` directory is used to set ``DISKNM`` variable. 
+
 To run ``rt.sh`` using a custom configuration file and the Rocoto workflow manager:
 
 .. code-block:: console

@@ -422,6 +422,10 @@ according to dependencies and run them concurrently.</p>
 <p class="admonition-title">Note</p>
 <p>Workflow Engine <a class="reference external" href="https://confluence.ecmwf.int/display/ECFLOW">ecFlow</a> is used with <code class="docutils literal notranslate"><span class="pre">-e</span></code> argument and <a class="reference external" href="https://github.com/christopherwharrop/rocoto">Rocoto</a> is used with <code class="docutils literal notranslate"><span class="pre">-r</span></code> argument. The Workflow Engine needs to be installed to the system to use these options. The Tier-1 platforms might have those workflow engines but Tear-2 level supported systems and custom installations might not have them.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the UFS Coastal specific input files are not part of the UFS Weather Model input files, the location of the RT directory (defined by <code class="docutils literal notranslate"><span class="pre">DISKNM</span></code> variable) in <code class="docutils literal notranslate"><span class="pre">rt.sh</span></code> needs to be modified to run UFS Coastal specific RTs. To do that user needs to edit platform (i.e. Orion, Hercules) specific section of <code class="docutils literal notranslate"><span class="pre">rt.sh</span></code> and set <code class="docutils literal notranslate"><span class="pre">DISKNM</span></code> variable. For both <code class="docutils literal notranslate"><span class="pre">Orion</span></code> and <code class="docutils literal notranslate"><span class="pre">Hercules</span></code> platforms, <code class="docutils literal notranslate"><span class="pre">/work2/noaa/nems/tufuk/RT</span></code> directory is used to set <code class="docutils literal notranslate"><span class="pre">DISKNM</span></code> variable.</p>
+</div>
 <p>To run <code class="docutils literal notranslate"><span class="pre">rt.sh</span></code> using a custom configuration file and the Rocoto workflow manager:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./rt.sh -r -l rt_coastal.conf</span>
 </pre></div>
